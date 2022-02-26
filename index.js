@@ -6,11 +6,11 @@ const boom = require('@hapi/boom')
 const { logErrors, errorHandler, boomErrorHandler} = require('./middlewares/error.handler.js');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(express.json()) //esto es un midleware creado para poder ver la info que mando en el body de un POST
 
-const whitelist = ["h ttp://127.0.0.1:5500", "https:// myapp.com"];
+const whitelist = ["http://127.0.0.1:5500", "https:// myapp.com"];
 const options = {
   origin: (origin, callback) => {
     if (whitelist.includes(origin) || !origin) {
