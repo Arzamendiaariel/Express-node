@@ -9,7 +9,7 @@ class ProductsService {
   }
 
   generate() {
-    const limit = 100
+    const limit = 50;
     for (let i = 0; i < limit; i++) {
       this.products.push({
         id: faker.datatype.uuid(),
