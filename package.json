@@ -3,11 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "dev": "nodemon index.js",
-    "start": "node index.js",
-    "lint": "eslint"
-  },
+"scripts": {
+  "dev": "react-scripts start",
+  "start": "serve -s build",
+  "build": "react-scripts build",
+  "test": "react-scripts test --env=jsdom",
+  "eject": "react-scripts eject",
+  "heroku-postbuild": "npm run build"
+},
   "author": "Ariel Arzamendia",
   "license": "MIT",
   "devDependencies": {
@@ -22,9 +25,10 @@
     "cors": "^2.8.5",
     "express": "^4.17.3",
     "faker": "^5.5.3",
-    "joi": "^17.6.0"
+    "joi": "^17.6.0",
+    "serve": "^13.0.2"
   },
-  "engines":{
+  "engines": {
     "node": "16.13.1"
   }
 }
