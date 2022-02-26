@@ -1,39 +1,26 @@
 const express = require('express');
-const faker = require('faker');
-const app = express();
-const port = 3008;
+const routerApi = require('./routes/index.js');
 
-app.get('/', (req, res) => {
+const { logErrors, errorHandler} = require('./middlewares/error.handler.js');
+
+const app = express();
+const port = 3000;
+
+app.use(express.json()) //esto es un midleware creado para poder ver la info que mando en el body de un POST
+
+app.get('/', (req, res) =>{
   res.send('Hola mi server express');
 });
 app.get('/nueva-ruta', (req, res) => {
   res.send('Hola, soy nueva ruta');
 });
 
-
-
-
-app.get('/users', (req, res) => {
-  const { limit, offset } = req.query;
-  if (limit && offset) {
-    res.json({
-      limit,
-      offset
-    });
-  } else {
-    res.send('No hay parametros')
-  }
-});
-
-app.get('/categories/:categoryId/products/:productId', (req, res) => {
-  const { categoryId, productId } = req.params;
-  res.json({
-    categoryId,
-    productId,
-  });
-})
-
+routerApi(app);
+app.use(logErrors);
+app.use(errorHandler); //el roden que se ponen los middlewares es importante, el orden determina la secuencia en que se ejecuntan los mismos.-
+//logErrors tiene next() y permite que siga el error hasta errorHandler
 
 app.listen(port, () => {
   console.log('Escuchando en puerto ' + port);
 });
+
