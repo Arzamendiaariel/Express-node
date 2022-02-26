@@ -6,7 +6,7 @@ const boom = require('@hapi/boom')
 const { logErrors, errorHandler, boomErrorHandler} = require('./middlewares/error.handler.js');
 
 const app = express();
-const port = process.env.PORT
+const port = process.env.PORT || 3000;
 
 app.use(express.json()) //esto es un midleware creado para poder ver la info que mando en el body de un POST
 
