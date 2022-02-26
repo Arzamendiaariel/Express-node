@@ -3,14 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-"scripts": {
-  "dev": "react-scripts start",
-  "start": "serve -s build",
-  "build": "react-scripts build",
-  "test": "react-scripts test --env=jsdom",
-  "eject": "react-scripts eject",
-  "heroku-postbuild": "npm run build"
-},
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "lint": "eslint"
+  },
   "author": "Ariel Arzamendia",
   "license": "MIT",
   "devDependencies": {
